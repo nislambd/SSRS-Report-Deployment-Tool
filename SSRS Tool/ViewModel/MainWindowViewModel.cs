@@ -448,10 +448,23 @@ namespace SSRSDeployTool.ViewModel
                     //}
                 }
 
-                Messenger.Default.Send(new NotificationMessage("ShowReportFolders"));
+                bool dialogResult=true;
+                Messenger.Default.Send(new NotificationMessageAction<bool>(this, "ShowReportFolders", (result) =>
+                {
+                    dialogResult = result;
+                }));
                 
-                //TODO What if the user wants to cancel deployment from the pop-up window
-                if (string.IsNullOrEmpty(ReportFolder)) return;
+                if (!dialogResult)
+                {
+                    LogEvent("Cancelled deploying reports");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(ReportFolder))
+                {
+                    LogEvent("No RDL files deployed as a target report folder was not selected");
+                    return;
+                }
             
                 var reportFiles = Files.Where(file => file.Extension.Equals(".rdl") ||
                                                       file.Extension.Equals(".jpg") ||

@@ -11,18 +11,13 @@ namespace SSRSDeployTool.View
         public MainWindow()
         {
             InitializeComponent();
-            Messenger.Default.Register<NotificationMessage>(this, (NotificationMessage msg) =>
+            Messenger.Default.Register<NotificationMessageAction<bool>>(this, msg =>
             {
                 if (msg.Notification == "ShowReportFolders")
                 {
-                    var reportListWindow = new ReportsFolderList {};
-                    reportListWindow.Owner = this;
+                    var reportListWindow = new ReportsFolderList {Owner = this};
                     var result = reportListWindow.ShowDialog();
-
-                    //if (result != null && !result.Value)
-                    //{
-                    //    this.d
-                    //}
+                    msg.Execute(result);
                 }
             });
         }
