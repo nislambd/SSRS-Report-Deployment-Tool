@@ -8,3 +8,5 @@ Listed below are the features in brief.
 - Drag/Drop files/folder from anywhere to add to the list of files to be deployed.
 - Live log report that tells what's going on.
 - Re-deploy only failed scripts/files.
+
+https://nislambd.blogspot.com/2017/05/ssrs-reports-deployment-tool.html
