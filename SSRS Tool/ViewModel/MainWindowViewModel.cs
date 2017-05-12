@@ -442,10 +442,10 @@ namespace SSRSDeployTool.ViewModel
 
                     _folderList = new ObservableCollection<string>(folders);
 
-                    if (_folderList.Count > 0 && string.IsNullOrEmpty(ReportFolder))
-                    {
-                        ReportFolder = _folderList[0];
-                    }
+                    //if (_folderList.Count > 0 && string.IsNullOrEmpty(ReportFolder))
+                    //{
+                    //    ReportFolder = _folderList[0];
+                    //}
                 }
 
                 Messenger.Default.Send(new NotificationMessage("ShowReportFolders"));

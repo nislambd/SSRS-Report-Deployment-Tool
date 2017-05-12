@@ -39,7 +39,7 @@ namespace SSRSDeployTool.Services
             
             if (fileinfo.Extension == ".rdl")
             {
-                warnings = reportingService.CreateReport(Path.GetFileName(fileName), $"/{folderName}", true,
+                warnings = reportingService.CreateReport(Path.GetFileNameWithoutExtension(fileName), $"/{folderName}", true,
                     reportDefinition, null);
             }
             else
